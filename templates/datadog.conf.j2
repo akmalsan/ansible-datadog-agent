@@ -1,0 +1,6 @@
+[Main]
+dd_url: https://app.datadoghq.com
+api_key: {{ datadog_api_key | default("") }}
+{% if datadog_dogstatsd_port is defined  %}
+dogstatsd_port: {{ datadog_dogstatsd_port }}
+{% endif %}

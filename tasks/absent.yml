@@ -1,0 +1,28 @@
+---
+- block:
+    - name: ensure datadog agent is absent
+      apt:
+        name: datadog-agent={{ datadog_agent_version }}
+        state: absent
+        update_cache: yes
+
+    - name: remove new datadog key from apt-key
+      apt_key:
+        id: a2923dff56eda6e76e55e492d3a80e30382e94de 
+        keyserver: "keyserver.ubuntu.com"
+        state: absent
+
+    - name: remove old datadog key from apt-key
+      apt_key: 
+        id: c7a7da52
+        keyserver: "keyserver.ubuntu.com"
+        state: absent
+
+    - name: cleanup datadog-agent related files
+      file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - "/etc/dd-agent"
+        - "/var/log/datadog"
+  become: true

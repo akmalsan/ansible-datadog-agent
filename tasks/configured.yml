@@ -1,0 +1,48 @@
+---
+- block:
+    - block:
+        - name: check current running datadog-agent version
+          shell: "dpkg -s datadog-agent | grep Version | awk '{print $2}'"
+          register: installed_dd_agent_version
+
+        - assert:
+            that:
+              - installed_dd_agent_version.stdout == "{{ datadog_agent_version }}"
+      rescue:
+        - name: ensure pinned version of datadog agent is installed
+          apt:
+            name: "datadog-agent={{ datadog_agent_version }}"
+            state: present
+            update_cache: yes
+            force: "{{ datadog_agent_allow_downgrade }}"
+
+    - name: inject datadog_api_key to datadog.conf
+      template:
+        src: datadog.conf.j2
+        dest: "{{ datadog_config_path }}/datadog.conf"
+        owner: "{{ datadog_user }}"
+        group: "{{ datadog_group }}"
+      notify: restart datadog-agent
+        
+    - name: create datadog agent supervisor configuration
+      template:
+        src: supervisor.conf.j2
+        dest: "{{ datadog_config_path }}/supervisor.conf"
+        owner: "{{ datadog_user }}"
+        group: "{{ datadog_group }}"
+      notify: restart datadog-agent
+    
+    - name: add system core config to datadog agent
+      copy:
+        src: system_core.yaml
+        dest: "{{ datadog_config_path }}/conf.d/system_core.yaml"
+        owner: "{{ datadog_user }}"
+        group: "{{ datadog_group }}"
+      notify: restart datadog-agent
+
+    - name: ensure datadog-agent is running
+      service:
+        name: datadog-agent
+        state: started
+        enabled: yes
+  become: true

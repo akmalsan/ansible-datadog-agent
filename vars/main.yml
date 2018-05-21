@@ -1,0 +1,8 @@
+---
+datadog_config_path: "/etc/dd-agent"
+datadog_agent_path: "/opt/datadog-agent/agent/agent.py"
+
+datadog_state_values:
+  - present
+  - absent
+  - configured

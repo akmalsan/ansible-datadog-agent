@@ -1,0 +1,12 @@
+---
+- name: restart datadog-agent
+  service:
+    name: datadog-agent
+    state: restarted
+  become: true
+
+- name: reload datadog-agent
+  service:
+    name: datadog-agent
+    state: reloaded
+  become: true

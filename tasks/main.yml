@@ -1,0 +1,10 @@
+---
+
+- name: validate datadog_state
+  assert:
+    that:
+      - "datadog_state in datadog_state_values"
+
+- name: "ensure datadog agent is {{ datadog_state }}"
+  include: "{{ datadog_state }}.yml"
+  static: false

@@ -1,0 +1,10 @@
+---
+- hosts: trusty
+  vars:
+    datadog_state: configure
+    datadog_log_retention: 2
+    datadog_log_size: 100MB
+    datadog_api_key: fec1286abc6b922d8edb42b7a9010f3d
+    datadog_custom_dogstastd_port: 18125
+  roles:
+    - role: ../../ansible-datadog-agent
