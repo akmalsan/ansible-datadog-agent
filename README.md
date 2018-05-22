@@ -29,7 +29,7 @@ Additional Variables
 
 - datadog_agent_version
   desc: datadog agent version format
-  default: 1:5.17.1-1
+  default: 1:5.21.1-1
 
 - datadog_log_retention
   desc: positive integer
