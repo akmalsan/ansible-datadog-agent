@@ -1,7 +1,7 @@
 ---
-- hosts: trusty
+- hosts: all
   vars:
     datadog_state: present
     datadog_api_key: ""
   roles:
-    - role: ../../ansible-datadog-agent
+    - role: ansible-datadog-agent

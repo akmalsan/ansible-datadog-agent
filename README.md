@@ -1,4 +1,4 @@
-ansible-datadog-agent
+# ansible-datadog-agent #
 
 Ansible Role for Datadog Agent
 
@@ -6,19 +6,19 @@ Contains two parts including :
 - Installing / uninstalling Datadog agent
 - General configuration for Datadog agent
 
-Installing / Uninstalling Datadog Agent
+## Installing / Uninstalling Datadog Agent
 
 It's basically tasks to do Datadog agent package installation in Ubuntu.
 
-General Configuration
+## General Configuration
 
 Covers Datadog general configuration sections, in initial release, it will be used to deploy Datadog API key to the configuration.
 
-Required Variables
+# Required Variables
 
 None
 
-Additional Variables
+# Additional Variables
 - datadog_state
   desc: present, absent
   default: present
@@ -55,6 +55,6 @@ There are three options of testing:
 
 To testing using vagrant for those options, use:
 
-TASK='task_name' vagrant up
+    TASK='task_name' vagrant up
 
 task_name value : present, absent, config

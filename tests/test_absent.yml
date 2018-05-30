@@ -1,6 +1,6 @@
 ---
-- hosts: tag_Name_tsitest-datadog
+- hosts: all
   vars:
     datadog_state: absent
   roles:
-    - role: ../../ansible-datadog-agent
+    - role: ansible-datadog-agent

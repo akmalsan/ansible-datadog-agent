@@ -1,0 +1,3 @@
+- name: ansible-datadog-agent
+  src: https://github.com/traveloka/ansible-datadog-agent.git
+  version: master

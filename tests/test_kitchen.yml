@@ -1,0 +1,14 @@
+---
+- hosts: all
+  roles:
+    - role: ansible-datadog-agent
+      datadog_state: present
+      datadog_api_key: # use your api key
+    - role: ansible-datadog-agent
+      datadog_state: configured
+      datadog_log_retention: 2
+      datadog_log_size: 100MB
+      datadog_custom_dogstastd_port: 18125
+      datadog_api_key: # use your api key
+    - role: ansible-datadog-agent
+      datadog_state: absent
