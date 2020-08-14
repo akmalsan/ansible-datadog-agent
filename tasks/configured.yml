@@ -2,7 +2,7 @@
 - block:
     - block:
         - name: check current running datadog-agent version
-          shell: "dpkg -s datadog-agent | grep Version | awk '{print $2}'"
+          shell: "dpkg -s datadog-agent | grep Version -m 1 | awk '{print $2}'"
           register: installed_dd_agent_version
 
         - assert:
