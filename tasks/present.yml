@@ -28,17 +28,12 @@
             update_cache: yes
             force: "{{ datadog_agent_allow_downgrade }}"
 
-    - name: find example files in conf.d dir
-      shell: "ls {{ datadog_config_path }}/conf.d/*.example"
-      register: delete_list
-      ignore_errors: yes
-
     - name: ensure example files are deleted
-      file:
-        state: absent
-        path: "{{ item }}"
-      with_items: "{{ delete_list.stdout_lines }}"
-      notify: restart datadog-agent
+      command: 'find {{ item }} -name "*.example" -type f -delete'
+
+      with_items:
+        - "{{ datadog_legacy_config_path }}"
+        - "{{ datadog_config_path }}"
 
   become: true
 
