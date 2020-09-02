@@ -1,6 +1,6 @@
 ---
-datadog_config_path: "/etc/dd-agent"
-datadog_agent_path: "/opt/datadog-agent/agent/agent.py"
+datadog_legacy_config_path: "/etc/dd-agent"
+datadog_config_path: "/etc/datadog-agent"
 
 datadog_state_values:
   - present
