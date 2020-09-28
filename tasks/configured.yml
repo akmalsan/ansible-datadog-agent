@@ -27,7 +27,7 @@
     - name: create datadog agent supervisor configuration
       template:
         src: supervisor.conf.j2
-        dest: "{{ datadog_config_path }}/supervisor.conf"
+        dest: "{{ datadog_legacy_config_path }}/supervisor.conf"
         owner: "{{ datadog_user }}"
         group: "{{ datadog_group }}"
       notify: restart datadog-agent
