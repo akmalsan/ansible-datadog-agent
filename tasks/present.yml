@@ -30,10 +30,10 @@
 
     - name: ensure example files are deleted
       command: 'find {{ item }} -name "*.example" -type f -delete'
-
       with_items:
         - "{{ datadog_legacy_config_path }}"
         - "{{ datadog_config_path }}"
+      ignore_errors: yes
 
   become: true
 
