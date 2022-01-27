@@ -3,9 +3,9 @@ site: datadoghq.com
 {% if datadog_dogstatsd_port is defined  %}
 dogstatsd_port: {{ datadog_dogstatsd_port }}
 {% endif %}
-{% if datadog_dogstatsd_port is defined  %}
-dogstatsd_port: {{ datadog_dogstatsd_port }}
+{% if datadog_expvar_port is defined  %}
+expvar_port: {{ datadog_expvar_port }}
 {% endif %}
-{% if datadog_dogstatsd_port is defined  %}
-dogstatsd_port: {{ datadog_dogstatsd_port }}
+{% if datadog_cmd_port is defined  %}
+cmd_port: {{ datadog_cmd_port }}
 {% endif %}
