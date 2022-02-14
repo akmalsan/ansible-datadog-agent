@@ -23,6 +23,7 @@
         path: "{{ item }}"
         state: absent
       with_items:
-        - "/etc/dd-agent"
+        - "{{ datadog_legacy_config_path }}"
+        - "{{ datadog_config_path }}"
         - "/var/log/datadog"
   become: true
