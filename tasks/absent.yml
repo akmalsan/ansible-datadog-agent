@@ -8,7 +8,7 @@
 
     - name: remove new datadog key from apt-key
       apt_key:
-        id: a2923dff56eda6e76e55e492d3a80e30382e94de 
+        id: d75cea17048b9acbf186794b32637d44f14f620e 
         keyserver: "keyserver.ubuntu.com"
         state: absent
 
